@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VJ Latest Movies</title>
+    <link href="./static/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body class="p-3 mb-2 bg-primary">
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="./"><button class="btn btn-primary" type="submit">Home</button></a>
+        <h5 style="color: crimson;">VJ Latest Movies</h5>
+        <form action="/search" method="post" class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" name="search_input" type="search" placeholder="Search" id="search_input" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </nav>
+      <br><br>
+    <span>
+        <div class="container">
+            <div class="row">
+                {%for movie in movies%}
+                    <div class="col">
+                        <a href={{ movie.download }} target="_blank"><img src={{ movie.image }} style="width: 190px;height:210px;"  alt="No Image" ></a>
+                        <h6 style="width: 200px;height:230px;">{{movie.title}}</h6>
+                    </div>
+                {%if loop.index is divisibleby 4 %}
+                    <div class="w-100"></div>
+                {%endif%}
+                {%endfor%}
+            </div>
+        </div>
+    </span>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <span class="d-md-flex d-block flex-row mx-md-auto mx-0">
+            <h5 style="color: crimson;">VJ Latest Movies</h5>
+        </span>
+      </nav>
+</body>
+</html>
